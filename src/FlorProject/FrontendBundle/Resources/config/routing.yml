@@ -1,0 +1,89 @@
+flor_project_frontend_blog:
+    path:     /blog
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendBlog:index }
+
+flor_project_frontend_blog_view:
+    path:     /blog/view/{id}
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendBlog:show }
+
+flor_project_frontend_homepage:
+    path:     /
+    defaults: { _controller: FlorProjectFrontendBundle:Default:index }
+
+flor_project_frontend_catalog_homepage:
+    path:     /catalog
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:showCatalog }
+
+flor_project_frontend_comment_create:
+    path: /comment/create
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendBlog:createComment }
+
+families:
+    path:     /families/{giftType}
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:families, family: 0 }
+    requirements:
+        giftType: candados|flores|cajas
+
+step1:
+    path:     /step1/{giftType}/{family}
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:step1, family: 0 }
+    requirements:
+        giftType: candados|flores|cajas
+        family: \d+
+
+step2:
+    path:     /step2/{codeGift}
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:step2 }
+
+step2Free:
+    path:     /step2Free/{codeGift}
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:step2Free }
+
+step3:
+    path:     /step3/{codeGive}
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:step3 }
+
+
+show_gift:
+    path:     /show_gift/{codeGive}
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:showGift }
+
+
+create_view:
+    path:     /view/create
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:createView }
+
+step_paypal:
+    path:     /give/paypal
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:paypal }
+
+send_give:
+    path:     /give/send
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:sendGive }
+
+get_attach:
+    path:     /give/attach/download/{codeGive}
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:downloadAttach }
+
+causes:
+    path:     /causes
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:showCauses }
+
+get_mapsnlock:
+    path:     /mapsnlock
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:showAllGives }
+
+maps:
+    path:     /maps
+#    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:maps }
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:showAllGives }
+
+sendMessage:
+    path:     /message
+    defaults: { _controller: FlorProjectFrontendBundle:Default:sendMessage }
+    requirements: { _method: post }
+
+
+frontend_user_create:
+    path: /user/register
+    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:createUser }

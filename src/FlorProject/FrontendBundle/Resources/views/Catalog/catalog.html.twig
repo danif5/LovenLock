@@ -1,0 +1,38 @@
+{% extends 'FlorProjectFrontendBundle:Common:layout_general.html.twig' %}
+{% block page_content %}
+<!-- Catalog block BEGIN -->
+<div class="team-block content content-center margin-bottom-40" id="catalog">
+    <div class="container">
+        <br>
+        <br>
+        <h2>{{ "Catálogo" | trans({}, 'FlorProjectFrontendBundle') }}</h2>
+        <br>
+        <div class="row">
+            <div class="item">
+                <a href="{{ path('families', {'giftType':'candados'}) }}"><div class="wrapper-sendit">
+                    <img src="{{ asset('bundles/florprojectfrontend/images/catalog/candado1.jpg') }}" alt="{{ "Candados" | trans({}, 'FlorProjectFrontendBundle') }}" class="img-responsive">
+                    <h3>{{ "Candados" | trans({}, 'FlorProjectFrontendBundle') }}</h3>
+                    <p>Lorem ipsum dolor amet, tempor ut labore magna tempor dolore</p>
+                </div></a>
+
+            </div>
+            <div class="item">
+                <a href="{{ path('families', {'giftType':'flores'}) }}"><div class="wrapper-sendit">
+                    <img src="{{ asset('bundles/florprojectfrontend/images/catalog/flor1.jpg') }}" alt="{{ "Flores" | trans({}, 'FlorProjectFrontendBundle') }}" class="img-responsive">
+                    <h3>{{ "Flores" | trans({}, 'FlorProjectFrontendBundle') }}</h3>
+                    <p>Lorem ipsum dolor amet, tempor ut labore magna tempor dolore</p>
+                </div></a>
+
+            </div>
+            <div class="item">
+                <a href="{{ path('families', {'giftType':'cajas'}) }}"><div class="wrapper-sendit">
+                    <img src="{{ asset('bundles/florprojectfrontend/images/catalog/caja1.jpg') }}" alt="{{ "Cajas" | trans({}, 'FlorProjectFrontendBundle') }}" class="img-responsive">
+                    <h3>{{ "Cajas" | trans({}, 'FlorProjectFrontendBundle') }}</h3>
+                    <p>Lorem ipsum dolor amet, tempor ut labore magna tempor dolore</p>
+                </div></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sendit block END -->
+{% endblock %}

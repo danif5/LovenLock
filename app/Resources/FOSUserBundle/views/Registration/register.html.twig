@@ -1,0 +1,9 @@
+{% extends app.request.get('partial') == 1 ? 'FOSUserBundle:Registration:partial.html.twig' : 'FOSUserBundle::layout.html.twig' %}
+
+{% block fos_user_content %}
+    <div class="modal-dialog">
+        {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+    </div>
+{% endblock fos_user_content %}
+
+

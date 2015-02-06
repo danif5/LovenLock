@@ -1,0 +1,19 @@
+<div class="normal-spacing">
+
+    {% if invalid_username is defined %}
+        <div class="alert alert-danger text-03em">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</div>
+    {% endif %}
+
+    <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request"
+          role="form">
+        <div class="form-group">
+            <label for="username"
+                   class="label-text">{{ 'resetting.request.username'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="text" id="username" name="username" required="required" class="form-control"/>
+        </div>
+
+        <input type="submit" class="btn btn-primary"
+               value="{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}"/>
+    </form>
+
+</div>

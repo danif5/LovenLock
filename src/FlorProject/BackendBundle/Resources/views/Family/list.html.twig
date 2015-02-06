@@ -1,0 +1,105 @@
+{% extends 'FlorProjectBackendBundle:Util:list.html.twig' %}
+
+{% set page_title="Familia" %}
+{% set title_small="Listado de familias de regalo" %}
+{% set datatable_id="family_table" %}
+
+{% block breadcrumb %}
+    <li>
+        <i class="fa fa-home"></i>
+        <a href="{{ path('backend_dashboard') }}">Inicio</a>
+        <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+        <a href="#">Familia</a>
+        <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+        <a href="#">Listado de Familia</a>
+    </li>
+{% endblock %}
+
+{% block porlet_title %}
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-tags"></i>Familia
+        </div>
+    </div>
+{% endblock %}
+
+{% block new_button  %}
+    <a href="{{ path('backend_family_new') }}" class="btn green">
+        Nueva Familia <i class="fa fa-plus"></i>
+    </a>
+{% endblock %}
+
+{% block table_header %}
+    <th width="5%">
+        ID
+    </th>
+    <th width="40%">
+        Tipo de Regalo
+    </th>
+    <th width="45%">
+        Nombre
+    </th>
+    <th width="10%">
+        Acciones
+    </th>
+{% endblock %}
+
+ {% block table_filters %}
+     <td>
+     </td>
+     <td>
+         <select name="filter_gift_type" class="form-control form-filter input-sm">
+             <option value="">Seleccionar...</option>
+             <option value="1">Candado</option>
+             <option value="2">Flor</option>
+             <option value="3">Caja</option>
+         </select>
+     </td>
+     <td>
+         <input type="text" class="form-control form-filter input-sm" name="filter_name">
+     </td>
+     <td>
+         <div class="margin-bottom-5">
+             <button class="btn btn-sm yellow filter-submit margin-bottom"><i class="fa fa-search"></i></button>
+             <button class="btn btn-sm red filter-cancel"><i class="fa fa-times"></i></button>
+         </div>
+
+     </td>
+ {% endblock %}
+
+{% block page_level_script %}
+    <div class="modal fade" id="delete_modal" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Confirmación</h4>
+                </div>
+                <div class="modal-body">
+                    Está a punto de eliminar una familia de regalo, ¿está usted seguro?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn blue">Save changes</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <script src="{{  asset('bundles/nivalmetronictemplate/assets/global/scripts/metronic.js') }}" type="text/javascript"></script>
+    <script src="{{  asset('bundles/nivalmetronictemplate/assets/admin/layout/scripts/layout.js') }}" type="text/javascript"></script>
+    <script src="{{  asset('bundles/nivalmetronictemplate/assets/global/scripts/datatable.js') }}"></script>
+    <script src="{{  asset('bundles/florprojectbackend/js/family/family-table.js') }}"></script>
+    <script>
+        jQuery(document).ready(function() {
+            Metronic.init(); // init metronic core components
+            Layout.init(); // init current layout
+            FamilyTableAjax.init();
+        });
+    </script>
+{% endblock %}

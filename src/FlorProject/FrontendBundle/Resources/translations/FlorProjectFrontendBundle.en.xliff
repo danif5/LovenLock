@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2014-12-08T09:53:46Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="0268f8b162a8580204e8a394e9e9eeb404ed8217" resname="1. Elige tu diseño de candado">
+        <jms:reference-file line="125">views/Default/index.html.twig</jms:reference-file>
+        <source>1. Elige tu diseño de candado</source>
+        <target state="new">1. Elige tu diseño de candado</target>
+      </trans-unit>
+      <trans-unit id="0da2a30fff798e84db842379d13fa7a019168c8b" resname="2. Busca un lugar en cualquier parte del mundo... ¡No hay límites!">
+        <jms:reference-file line="126">views/Default/index.html.twig</jms:reference-file>
+        <source>2. Busca un lugar en cualquier parte del mundo... ¡No hay límites!</source>
+        <target state="new">2. Busca un lugar en cualquier parte del mundo... ¡No hay límites!</target>
+      </trans-unit>
+      <trans-unit id="e9e1f30321e04d5bb77c8ee9fec0aa95e8300e8b" resname="3. Envíalo y haz que el destinatario viaje virtualmente contigo">
+        <jms:reference-file line="127">views/Default/index.html.twig</jms:reference-file>
+        <source>3. Envíalo y haz que el destinatario viaje virtualmente contigo</source>
+        <target state="new">3. Envíalo y haz que el destinatario viaje virtualmente contigo</target>
+      </trans-unit>
+      <trans-unit id="0b9d2b2362bc33581ba11fddcb0cf0590ebd3a7a" resname="Blog">
+        <jms:reference-file line="223">views/Default/index.html.twig</jms:reference-file>
+        <source>Blog</source>
+        <target state="new">Blog</target>
+      </trans-unit>
+      <trans-unit id="8d6bc89f131f7b9f5b89c5e1c8b82bf5b7e8c83b" resname="Cajas">
+        <jms:reference-file line="125">views/Catalog/catalog.html.twig</jms:reference-file>
+        <jms:reference-file line="126">views/Catalog/catalog.html.twig</jms:reference-file>
+        <jms:reference-file line="146">views/Catalog/catalog.html.twig</jms:reference-file>
+        <source>Cajas</source>
+        <target state="new">Cajas</target>
+      </trans-unit>
+      <trans-unit id="d69f703c6337808d7a1a7ebec253b7d6d1858ffd" resname="Candados">
+        <jms:reference-file line="109">views/Catalog/catalog.html.twig</jms:reference-file>
+        <jms:reference-file line="110">views/Catalog/catalog.html.twig</jms:reference-file>
+        <jms:reference-file line="144">views/Catalog/catalog.html.twig</jms:reference-file>
+        <source>Candados</source>
+        <target state="new">Candados</target>
+      </trans-unit>
+      <trans-unit id="d92b8115c4c9d301d829ecade6ccfbb6eaaee1bd" resname="Catálogo">
+        <jms:reference-file line="104">views/Catalog/catalog.html.twig</jms:reference-file>
+        <jms:reference-file line="187">views/Default/index.html.twig</jms:reference-file>
+        <jms:reference-file line="193">views/Default/index.html.twig</jms:reference-file>
+        <jms:reference-file line="194">views/Default/index.html.twig</jms:reference-file>
+        <source>Catálogo</source>
+        <target state="new">Catálogo</target>
+      </trans-unit>
+      <trans-unit id="fda6f7e1263e2e18ead2ecf1e53b55df6fab2082" resname="Demuéstraselo siendo original… sitúa vuestro candado digital en">
+        <jms:reference-file line="170">views/Default/index.html.twig</jms:reference-file>
+        <source>Demuéstraselo siendo original… sitúa vuestro candado digital en</source>
+        <target state="new">Demuéstraselo siendo original… sitúa vuestro candado digital en</target>
+      </trans-unit>
+      <trans-unit id="4560d86ab845a294a007acbeeac7a496bbed9130" resname="Flores">
+        <jms:reference-file line="117">views/Catalog/catalog.html.twig</jms:reference-file>
+        <jms:reference-file line="118">views/Catalog/catalog.html.twig</jms:reference-file>
+        <jms:reference-file line="145">views/Catalog/catalog.html.twig</jms:reference-file>
+        <source>Flores</source>
+        <target state="new">Flores</target>
+      </trans-unit>
+      <trans-unit id="c84b08ebd1f5daf64276efa726c7b67c8f4dd06e" resname="Los candados del amor, ¡Ahora virtuales!">
+        <jms:reference-file line="120">views/Default/index.html.twig</jms:reference-file>
+        <jms:reference-file line="165">views/Default/index.html.twig</jms:reference-file>
+        <source>Los candados del amor, ¡Ahora virtuales!</source>
+        <target state="new">Los candados del amor, ¡Ahora virtuales!</target>
+      </trans-unit>
+      <trans-unit id="fef83052a22587a8cc3e604d1b815421b10327cd" resname="Love &amp; Causes">
+        <jms:reference-file line="209">views/Default/index.html.twig</jms:reference-file>
+        <jms:reference-file line="210">views/Default/index.html.twig</jms:reference-file>
+        <source><![CDATA[Love & Causes]]></source>
+        <target state="new"><![CDATA[Love & Causes]]></target>
+      </trans-unit>
+      <trans-unit id="da6da0c41e6a1328429cf7faa4d0c01f3afae69f" resname="Para más información mira el video que tienes a tu derecha">
+        <jms:reference-file line="129">views/Default/index.html.twig</jms:reference-file>
+        <source>Para más información mira el video que tienes a tu derecha</source>
+        <target state="new">Para más información mira el video que tienes a tu derecha</target>
+      </trans-unit>
+      <trans-unit id="0061eb3cb3f92e2e0fa1fc109a5e7cde3b7bf5f6" resname="Podréis visitarlo y compartirlo siempre que queráis">
+        <jms:reference-file line="128">views/Default/index.html.twig</jms:reference-file>
+        <source>Podréis visitarlo y compartirlo siempre que queráis</source>
+        <target state="new">Podréis visitarlo y compartirlo siempre que queráis</target>
+      </trans-unit>
+      <trans-unit id="daed4e62e68bf28a640195e20778bd522c376c06" resname="Post 1">
+        <jms:reference-file line="227">views/Default/index.html.twig</jms:reference-file>
+        <source>Post 1</source>
+        <target state="new">Post 1</target>
+      </trans-unit>
+      <trans-unit id="b0d48190fe3df75a72f4c325a1d28d4cf09060da" resname="Post 2">
+        <jms:reference-file line="237">views/Default/index.html.twig</jms:reference-file>
+        <source>Post 2</source>
+        <target state="new">Post 2</target>
+      </trans-unit>
+      <trans-unit id="f229942738d13b552dd56068b9b47b77fd706ba3" resname="Post 3">
+        <jms:reference-file line="246">views/Default/index.html.twig</jms:reference-file>
+        <source>Post 3</source>
+        <target state="new">Post 3</target>
+      </trans-unit>
+      <trans-unit id="75c93044700fd19bc7f70906da4f81f5bfcd30db" resname="Post1">
+        <jms:reference-file line="229">views/Default/index.html.twig</jms:reference-file>
+        <source>Post1</source>
+        <target state="new">Post1</target>
+      </trans-unit>
+      <trans-unit id="b4a7cd08b284d372fae24aede5f0451e6c6de30d" resname="Post2">
+        <jms:reference-file line="239">views/Default/index.html.twig</jms:reference-file>
+        <source>Post2</source>
+        <target state="new">Post2</target>
+      </trans-unit>
+      <trans-unit id="1b2f8993e315111bfde6b23dde4429553fbe6b3e" resname="Post3">
+        <jms:reference-file line="248">views/Default/index.html.twig</jms:reference-file>
+        <source>Post3</source>
+        <target state="new">Post3</target>
+      </trans-unit>
+      <trans-unit id="87482104d412ff10b0122a42fd562e81d7f44b86" resname="Recorre el mundo y deja mensajes a los tuyos a golpe de clic,">
+        <jms:reference-file line="167">views/Default/index.html.twig</jms:reference-file>
+        <source>Recorre el mundo y deja mensajes a los tuyos a golpe de clic,</source>
+        <target state="new">Recorre el mundo y deja mensajes a los tuyos a golpe de clic,</target>
+      </trans-unit>
+      <trans-unit id="c1c77c35d9223cb04bc5c07e476e70a16f36f875" resname="Sin moverte de casa ponle uno a tu persona especial">
+        <jms:reference-file line="122">views/Default/index.html.twig</jms:reference-file>
+        <source>Sin moverte de casa ponle uno a tu persona especial</source>
+        <target state="new">Sin moverte de casa ponle uno a tu persona especial</target>
+      </trans-unit>
+      <trans-unit id="51a385f58f25ddb9c0059f5287de87964d77fa5b" resname="Video Tutorial">
+        <jms:reference-file line="201">views/Default/index.html.twig</jms:reference-file>
+        <jms:reference-file line="202">views/Default/index.html.twig</jms:reference-file>
+        <source>Video Tutorial</source>
+        <target state="new">Video Tutorial</target>
+      </trans-unit>
+      <trans-unit id="eddd0959677a81f94a9d159016b4bcec54ed653e" resname="Y si no… díselo con flores, o elige una caja para llenarla de sorpresas.">
+        <jms:reference-file line="174">views/Default/index.html.twig</jms:reference-file>
+        <source>Y si no… díselo con flores, o elige una caja para llenarla de sorpresas.</source>
+        <target state="new">Y si no… díselo con flores, o elige una caja para llenarla de sorpresas.</target>
+      </trans-unit>
+      <trans-unit id="14006b2b4940c93bc886d239d73c8f53f11e352b" resname="cualquier parte del mundo. Envíaselo e invítale a viajar contigo">
+        <jms:reference-file line="171">views/Default/index.html.twig</jms:reference-file>
+        <source>cualquier parte del mundo. Envíaselo e invítale a viajar contigo</source>
+        <target state="new">cualquier parte del mundo. Envíaselo e invítale a viajar contigo</target>
+      </trans-unit>
+      <trans-unit id="a3ee69a833d73d936f858cd44d438c7fd0d83e83" resname="en cualquier lugar del planeta. ¿Tu amor no conoce fronteras?,">
+        <jms:reference-file line="168">views/Default/index.html.twig</jms:reference-file>
+        <source>en cualquier lugar del planeta. ¿Tu amor no conoce fronteras?,</source>
+        <target state="new">en cualquier lugar del planeta. ¿Tu amor no conoce fronteras?,</target>
+      </trans-unit>
+      <trans-unit id="ef8e37dfc5535548b062534da733617184f4ea9f" resname="tu pareja, tu amigo, tu ídolo... ¡donde tu imaginación te lleve!">
+        <jms:reference-file line="123">views/Default/index.html.twig</jms:reference-file>
+        <source>tu pareja, tu amigo, tu ídolo... ¡donde tu imaginación te lleve!</source>
+        <target state="new">tu pareja, tu amigo, tu ídolo... ¡donde tu imaginación te lleve!</target>
+      </trans-unit>
+      <trans-unit id="bb8ab2daf9eabdf4ba94c6adf2458e9bc7e444ae" resname="virtualmente para recogerlo.">
+        <jms:reference-file line="172">views/Default/index.html.twig</jms:reference-file>
+        <source>virtualmente para recogerlo.</source>
+        <target state="new">virtualmente para recogerlo.</target>
+      </trans-unit>
+      <trans-unit id="78378eb53166dfc26cdafb728961dbdb3ed4fb1f" resname="¡Podréis compartirlo en las redes y volver a visitarlo siempre que queráis!">
+        <jms:reference-file line="173">views/Default/index.html.twig</jms:reference-file>
+        <source>¡Podréis compartirlo en las redes y volver a visitarlo siempre que queráis!</source>
+        <target state="new">¡Podréis compartirlo en las redes y volver a visitarlo siempre que queráis!</target>
+      </trans-unit>
+      <trans-unit id="30c2eba9e2b3240dac7031e038b11afa043d2016" resname="¿Cómo funciona?">
+        <jms:reference-file line="188">views/Default/index.html.twig</jms:reference-file>
+        <source>¿Cómo funciona?</source>
+        <target state="new">¿Cómo funciona?</target>
+      </trans-unit>
+      <trans-unit id="20edda1c52abc148dc430a9cbf4aeb6b150ad0b5" resname="¿Tus amigos son un tesoro?, ¿Quieres sorprender a tus ídolos?">
+        <jms:reference-file line="169">views/Default/index.html.twig</jms:reference-file>
+        <source>¿Tus amigos son un tesoro?, ¿Quieres sorprender a tus ídolos?</source>
+        <target state="new">¿Tus amigos son un tesoro?, ¿Quieres sorprender a tus ídolos?</target>
+      </trans-unit>
+      <trans-unit id="b4f801fc44e7def3928fa6aac162c10132022c87" resname="¿cómo?">
+        <jms:reference-file line="124">views/Default/index.html.twig</jms:reference-file>
+        <source>¿cómo?</source>
+        <target state="new">¿cómo?</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

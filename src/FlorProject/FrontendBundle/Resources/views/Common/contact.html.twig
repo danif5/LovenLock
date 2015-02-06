@@ -1,0 +1,32 @@
+<form action="{{ path("sendMessage")  }}" method="post" name="florproject_backendbundle_message">
+    <div id="florproject_backendbundle_message">
+        <div>
+            <input type="text" placeholder="Nombre y Apellidos" class="form-control" required="required"
+                   name="florproject_backendbundle_message[name]" id="florproject_backendbundle_message_name">
+        </div>
+        <br>
+
+        <div>
+            <input type="email" placeholder="Su correo electrónico" class="form-control" required="required"
+                   name="florproject_backendbundle_message[email]" id="florproject_backendbundle_message_email">
+        </div>
+        <br>
+
+        <div><input type="text" placeholder="Teléfono" class="form-control" required="required"
+                    name="florproject_backendbundle_message[phone]" id="florproject_backendbundle_message_phone">
+        </div>
+        <br>
+
+        <div><input type="text" placeholder="Asunto" class="form-control" required="required"
+                    name="florproject_backendbundle_message[subject]" id="florproject_backendbundle_message_subject">
+        </div>
+        <br>
+
+        <div><textarea placeholder="Mensaje" class="form-control" required="required"
+                       name="florproject_backendbundle_message[message]" id="florproject_backendbundle_message_message"
+                       style=""></textarea>
+        </div>
+        <br>
+        <button type="submit" class="btn red">Enviar</button>
+    </div>
+</form>

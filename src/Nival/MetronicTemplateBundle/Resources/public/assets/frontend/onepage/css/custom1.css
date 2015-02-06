@@ -1,0 +1,199 @@
+/* here you can put your own css to customize and override the theme */
+body {
+    font-family: "Century Gothic", "Sans-Serif", generic !important;
+    background: #f9f9f9;
+}
+
+.header {
+   top: 0 !important;
+   bottom: auto !important;
+   background: rgba(0,0,0,1) !important;
+   box-shadow: 0 1px 4px rgba(228, 228, 228, 0.40) !important;
+}
+
+.portfolio-block {
+    background-color: #2c2c2c;
+    padding-bottom: 60px;
+}
+
+.portfolio-block h2{
+    color: rgba(255,255,255,1);
+}
+
+.portfolio-block .item {
+    padding: 10px;
+}
+
+.site-logo {
+    padding-top: 2px;
+}
+
+.header-navigation {
+    float: right;
+    font: 400 16px "Myriad Pro Regular",Arial,sans-serif;
+    list-style: none outside none;
+    margin: 0;
+    padding: 22px 0 0;
+    text-transform: uppercase;
+}
+
+.header-navigation .fa {
+    color: rgba(255,255,255,1) !important;
+}
+
+.header-navigation a {
+    color: rgba(255,255,255,1);
+}
+
+
+.wrapper-sendit {
+    width: 292px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    background: rgba(255,255,255,1);
+    border-color: #e4e4e4;
+    border-style: solid;
+    border-width: thin;
+}
+
+.wrapper-blog {
+    width: 296px;
+    padding-left: 0px;
+    padding-top: 10px;
+    padding-right: 0px;
+    padding-bottom: 5px;
+    background: rgba(255,255,255,1);
+    border-color: #e4e4e4;
+    border-style: solid;
+    border-width: thin;
+}
+
+.wrapper-blog h6{
+    text-align: left;
+    text-transform: uppercase;
+    padding-left: 5%;
+}
+
+.wrapper-blog h6:after{
+    border-bottom: 2px double #05B2D2;
+    content: " ";
+    display: block;
+    width: 140px;
+    margin-left: 10px;
+    z-index: 2;
+}
+
+.wrapper-blog p {
+    text-align: justify;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5%;
+}
+
+.revslider-311 {
+    max-height: 80% !important;
+}
+
+.static-layer-text {
+    color: #fff;
+    background: rgba(0,0,0,0.40);
+    font: 400 14px/1.4 "Century Gothic", Arial, sans-serif;
+    display: inline-block;
+    text-align: left;
+    padding: 22px 25px 17px;
+}
+
+.static-layer-text h2 {
+    font: 400 16px/38px "Century Gothic", Arial, sans-serif;
+    padding: 0;
+    margin: 0 0 8px;
+}
+
+.img-responsive {
+    text-align: center !important;
+}
+
+.item {
+    text-align: center;
+    display: inline-block;
+    margin-right: 1%;
+}
+
+.pre-pre-footer {
+    background: #008EC2;
+    color: white;
+}
+.footer-catalog-box {
+
+    text-align: center;
+    padding-bottom: 5%;
+    padding-top: 3%;
+}
+
+.footer-catalog-box h3, h5, b{
+    font-family: "Century Gothic", Arial, sans-serif !important;
+}
+
+.footer-catalog-box h5, b{
+    color: #000000;
+}
+
+.footer {
+    background-color: #000000 !important;
+}
+
+.team-block a, a:focus, a:hover, a:active {
+    color: #5F6F7E;
+    outline: 0;
+    text-decoration: none;
+}
+
+.lower-case {
+    text-transform: none;
+}
+
+.header-navigation li a.current{
+    color: #64AED9;
+}
+
+.header-navigation li a {
+    display: inline-block;
+}
+
+.content h2 {
+    font: 400 25px/1.4 "Century Gothic", Arial, sans-serif;
+}
+
+.team-block h5 {
+    font-weight: 300 !important;
+}
+
+.team-block h3 {
+    font-size: 16px;
+    color: #444444;
+
+}
+.content h2:before,
+.content h2:after {
+    background-color: transparent;
+    border-top: 1px solid #b7bbbf;
+    border-bottom: 1px solid #b7bbbf;
+    content: " ";
+    display: inline-block;
+    height: 5px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+}
+
+.content h2:before {
+    right: 3em;
+    margin-left: -50%;
+}
+
+.content h2:after {
+    left: 3em;
+    margin-right: -50%;
+}

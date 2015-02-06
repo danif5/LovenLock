@@ -1,0 +1,29 @@
+{% form_theme form ':Form:fields.html.twig' %}
+<div class="col-sm-8 col-sm-offset-2">
+    <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST"
+          class="fos_user_resetting_reset" role="form">
+
+        <div class="form-group">
+            {{ form_errors(form) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.new | first, null, { 'label_attr' : {'class' : 'label-text' } } ) }}
+            {{ form_errors(form.new | first) }}
+            {{ form_widget(form.new | first, {'attr' : {'class' : 'form-control'} }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.new | last, null, { 'label_attr' : {'class' : 'label-text' } } ) }}
+            {{ form_errors(form.new | last) }}
+            {{ form_widget(form.new | last, {'attr' : {'class' : 'form-control'} }) }}
+        </div>
+        <div class="form-group">
+            {{ form_rest(form) }}
+        </div>
+        <div class="form-group">
+            {{ form_rest(form) }}
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" value="{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}"/>
+        </div>
+    </form>
+</div>

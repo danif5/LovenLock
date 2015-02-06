@@ -1,0 +1,17 @@
+{% block subject %}Reseteando Clave{% endblock %}
+
+{% block body_text %}
+    {% autoescape false %}
+    Hola {{ user.username }} !
+
+    Usted puede resetear su clave entrando a la siguiente URL {{ confirmationUrl }}
+
+    Saludos,
+    El equipo de Lovenlock.
+    {% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+
+
+{% endblock %}

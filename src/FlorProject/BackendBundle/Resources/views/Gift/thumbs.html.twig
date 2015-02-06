@@ -1,0 +1,2 @@
+{% set gift_image_path = 'upload/media/' ~ gift.media %}
+<img alt="" src="{{ gift_image_path|imagine_filter('tn_gift') }}"/>

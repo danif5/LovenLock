@@ -1,0 +1,3 @@
+earth_project_metronic_template_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: EarthProjectMetronicTemplateBundle:Default:index }

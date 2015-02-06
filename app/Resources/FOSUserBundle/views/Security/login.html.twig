@@ -1,0 +1,7 @@
+{% extends app.request.get('partial') == 1 ? 'FOSUserBundle:Security:partial.html.twig' : 'FOSUserBundle::layout.html.twig' %}
+
+{% block fos_user_content %}
+    <div class="{{ app.request.get('partial') != 1 ? "modal-dialog" : "" }}">
+        {{ include ("FOSUserBundle:Security:login_content.html.twig", {'partial' : app.request.get('partial')}) }}
+    </div>
+{% endblock fos_user_content %}

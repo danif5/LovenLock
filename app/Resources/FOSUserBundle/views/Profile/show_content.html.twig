@@ -1,0 +1,24 @@
+<div class="container" xmlns="http://www.w3.org/1999/html">
+
+    <h3 class="page-header">Información de Perfil</h3>
+
+    <div class="col-xs-12">
+        <div class="label-text">
+            <label>{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}</label>:
+            <a href="{{ path('fos_user_profile_edit') }}" title="Editar su perfil en lovenlock.com">{{ user.username }}</a>
+        </div>
+
+        <div class="label-text">
+            <label>{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}</label>: {{ user.email }}
+        </div>
+
+        <div class="label-text">
+            <label>Estado de su cuenta</label>:
+            {%  if is_granted('ROLE_FBUSER') and not is_granted('ROLE_ADMIN') %}
+                Autenticado usando  <a href="https://www.facebook.com/Lovenlock" target="_blank" title="Ir a la pagina de Facebook de Lovenlock">credenciales de Facebook</a>.
+            {% else %}
+                Autenticado usando una cuenta local de Lovenlock protegida por contraseña [<a href="{{ path('fos_user_change_password') }}" title="Change your password">Cambiar contraseña</a>]
+            {% endif %}
+        </div>
+    </div>
+</div>

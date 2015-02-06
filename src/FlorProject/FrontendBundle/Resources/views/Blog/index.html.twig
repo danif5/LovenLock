@@ -1,0 +1,46 @@
+{% extends 'FlorProjectFrontendBundle:Common:layout_general.html.twig' %}
+{% block page_content %}
+    <!-- Catalog block BEGIN -->
+    <div class="team-block content content-center margin-bottom-40" id="blog">
+        <div class="container">
+            <br>
+            <br>
+
+            <h2>{{ "Blog" | trans({}, 'FlorProjectFrontendBundle') }}</h2>
+            <br>
+
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-md-offset-2 article-block">
+                    {% for entity in entities %}
+                        <div class="row">
+                            <div class="blog-article" style="text-align: justify;">
+                                <h3>
+                                    <a class="" href="{{ path('flor_project_frontend_blog_view', { 'id': entity.id }) }}">{{ entity.title }}</a>
+                                </h3>
+
+                                <p>
+                                    {{ entity.resume|raw }}
+                                </p>
+
+                                <div>
+                                    <ul class="list-inline pull-right">
+                                        <li>
+                                            <i class="fa fa-calendar"></i>
+                                            <a href="#">{{ entity.creationDate|date("d-m-Y H:i") }}</a>
+                                        </li>
+                                        <li>
+                                            {#<i class="fa fa-comments"></i>
+                                            <a href="#">38 Comments </a>#}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sendit block END -->
+{% endblock %}

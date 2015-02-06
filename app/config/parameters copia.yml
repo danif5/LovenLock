@@ -1,0 +1,18 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: db553288783.db.1and1.com
+    database_port: 3306
+    database_name: db553288783
+    database_user: root
+    database_password:
+    mailer_transport: mail
+    mailer_host: smtp.1and1.es
+    mailer_user: info@torrecreativa.com
+    mailer_password: Creativa12
+    locale: es
+    secret: secret12345
+    debug_toolbar: true
+    debug_redirects: false
+    use_assetic_controller: true
+    fb_app_id: '837075486333316'

@@ -1,0 +1,39 @@
+# Bootstrap
+app/bootstrap*
+
+# Symfony directories
+vendor/*
+/bin/
+*/logs/*
+*/cache/*
+tmp/*
+
+# Configuration files
+app/config/parameters.ini
+app/config/parameters.yml
+
+# IDE PHPStorm
+.idea/*
+
+# Vagrant
+.vagrant/*
+default/*
+
+
+
+# Assets and user uploads
+/web/bundles/
+/app/upload/
+
+#development email spool directory
+/app/emails/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~

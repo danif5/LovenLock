@@ -1,0 +1,55 @@
+{% extends 'FlorProjectFrontendBundle:Common:gift_manager.html.twig' %}
+{% block block_content %}
+    <!-- Portfolio block BEGIN -->
+    <div class="form-send center margin-bottom-10">
+        <div class="row">
+            <div class="pull-right"><img src="{{ asset('bundles/florprojectfrontend/images/common/cesta.png') }}" style="margin-right: 30px" class="margin-top-10"></div>
+        </div>
+        <div class="row">
+            <div class=" col-md-6">
+                {% set gift_image_path = 'upload/media/' ~ gift.media %}
+                <img src="{{ gift_image_path|imagine_filter('normal') }}" style="height: auto; max-width: 100%; padding-top: 3%; padding-bottom: 3%" >
+            </div>
+            <div class=" col-md-6">
+                <form action="{{ path('step_paypal') }}" enctype="multipart/form-data" method="post" >
+                    <input type="hidden" name="codeGift" value="{{ gift.id }}" />
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label>eMAIL</label>
+
+                            <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                <input type="email" required="required" class="form-control" name="senderEmail" id="senderEmail" placeholder="De:">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>eMAIL Receptor</label>
+
+                            <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                <input type="email" required="required email" class="form-control" name="receptorEmail" id="receptorEmail" placeholder="A:">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Escribe tu mensaje</label>
+                            <textarea class="form-control" name="message" rows="3"></textarea>
+                        </div>
+                        <div class="pull-left" style="padding-top: 20px">
+                            <p>Adjuntar una imagen <img src="{{ asset('bundles/florprojectfrontend/images/common/camara.png') }}" alt="{{ "Post2" | trans({}, 'FlorProjectFrontendBundle') }}" style="vertical-align: center; padding-left: 20px;"> <input type="file" name="file"></p>
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" class="btn green" style="margin-top: 20px">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <p class="text-center">
+        <a href="{{ path('step1', {'giftType': giftType, 'family': gift.family.id}) }}"><< Anterior </a>
+    </p>
+{% endblock %}

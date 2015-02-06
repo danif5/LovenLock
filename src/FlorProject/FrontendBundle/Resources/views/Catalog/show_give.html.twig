@@ -1,0 +1,275 @@
+{% extends 'FlorProjectFrontendBundle:Common:gift_manager.html.twig' %}
+{% set gift_image_path = 'upload/media/' ~ give.gift.media %}
+{% block head_script %}
+    <script src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        var map;
+        var map2;
+        var marker;
+        var marker2
+        var geocoder;
+        var geocoder2;
+        var minZoomLevel = 1;
+
+        function initializemap(lat, lon, zoom, number) {
+            var myLatlng = new google.maps.LatLng(lat, lon);
+            var myOptions = {
+                zoom: zoom,
+                streetViewControl: false,
+                scrollwheel: true,
+                center: new google.maps.LatLng(lat, lon),
+                mapTypeControl: true,
+                mapTypeId: google.maps.MapTypeId.HYBRID,
+                styles: [
+                    {
+                        featureType: "road",
+                        stylers: [
+                            {lightness: 31},
+                            {saturation: -70}
+                        ]
+                    },
+                    {
+                        featureType: "poi",
+                        elementType: "labels",
+                        stylers: [
+                            {
+                                visibility: "off"
+                            }
+                        ]
+                    }
+                ]
+            }
+            map = new google.maps.Map(document.getElementById(number), myOptions);
+
+            geocoder = new google.maps.Geocoder();
+
+            var thePanorama = map.getStreetView();
+
+            google.maps.event.addListener(map, 'zoom_changed', function () {
+                if (map.getZoom() < minZoomLevel) map.setZoom(minZoomLevel);
+            });
+
+            /*  google.maps.event.addListener(thePanorama, 'visible_changed', function() {
+
+             if (thePanorama.getVisible()) {
+
+             //  marker.setPosition(thePanorama.getLocation().latLng);
+
+             } else {
+
+             }
+
+             });*/
+
+
+        }
+        ;
+
+
+
+
+        function initializemap2(lat, lon, zoom, heading, pitch) {
+
+            var myLatlng = new google.maps.LatLng(lat, lon);
+            var panoramaOptions = {
+                position: myLatlng,
+                pov: {
+                    heading: heading,
+                    zoom: zoom,
+                    pitch: pitch
+                },
+                visible: true
+            };
+
+
+            map2 = new google.maps.StreetViewPanorama(document.getElementById('map_canvas2'), panoramaOptions);
+
+        }
+        ;
+
+
+
+
+
+        function addMarker(lat, lon, titulo, foto, mensaje) {
+            var pinIcon = new google.maps.MarkerImage(
+                    '/media/cache/tn_catalog/upload/media/' + foto,
+                    null, /* size is determined at runtime */
+                    null, /* origin is 0,0 */
+                    null, /* anchor is bottom center of the scaled image */
+                    new google.maps.Size(50, 50)
+            );
+
+            var myLatlng = new google.maps.LatLng(lat, lon);
+            marker = new google.maps.Marker({
+                position: myLatlng,
+                icon: pinIcon,
+                map: map
+            });
+
+            {% if sended != false %}
+            var content = '<div class="map-info-window">' +
+                    '<p>' +
+                    '<span class="price" style="font-size: 14px;color: #000000;font-weight: bold;padding-right: 10px;" >' + mensaje + '</span>' +
+                    '</p>' +
+                    '</div>';
+
+            //Vamos con el infowindow
+
+            id = typeof id !== 'undefined' ? id : '';
+            var infowindow = new google.maps.InfoWindow(
+                    {
+                        content: content,
+                        id: id
+                    });
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.open(map, marker);
+            });
+
+            {% endif %}
+
+        }
+        ;
+
+
+
+
+        function addMarker2(lat, lon, titulo, foto, mensaje) {
+            var pinIcon = new google.maps.MarkerImage(
+                    '/media/cache/tn_catalog/upload/media/' + foto,
+                    null, /* size is determined at runtime */
+                    null, /* origin is 0,0 */
+                    null, /* anchor is bottom center of the scaled image */
+                    new google.maps.Size(135, 135)
+            );
+            var icon_base = pinIcon;
+            var myLatlng = new google.maps.LatLng(lat, lon);
+            marker2 = new google.maps.Marker({
+                position: myLatlng,
+                icon: icon_base,
+                map: map2
+            });
+
+            {% if sended != false %}
+            var content = '<div class="map-info-window">' +
+                    '<p>' +
+                    '<span class="price" style="font-size: 14px;color: #000000;font-weight: bold;padding-right: 10px;" >' + mensaje + '</span>' +
+                    '</p>' +
+                    '</div>';
+
+            //Vamos con el infowindow
+
+            id = typeof id !== 'undefined' ? id : '';
+            var infowindow = new google.maps.InfoWindow(
+                    {
+                        content: content,
+                        id: id
+                    });
+            google.maps.event.addListener(marker2, 'click', function () {
+                infowindow.open(map2, marker2);
+            });
+
+            {% endif %}
+
+        }
+        ;
+
+
+        $(document).ready(function () {
+
+            {% if give.message == 'Free' %}
+                var msg = 'Item Gratuito. Para añadir un mensaje debes seleccionar un item de pago ';
+            {% else %}
+                var msg = '{{ give.message }}';
+            {% endif %}
+
+            initializemap('{{ give.latitude2 }}', '{{ give.longitude2 }}', {{ give.zoom }}, 'map_canvas');
+            addMarker('{{ give.latitude }}', '{{ give.longitude }}', '{{ give.gift.name }}', '{{ give.gift.media }}', msg);
+            initializemap2('{{ give.latitude3 }}', '{{ give.longitude3 }}', {{ give.zoom2 }}, {{ give.heading }}, {{ give.pitch }});
+            addMarker2('{{ give.latitude }}', '{{ give.longitude }}', '{{  give.gift.name  }}', '{{ give.gift.media }}', msg);
+
+        });
+
+
+    </script>
+
+{% endblock %}
+{% block onLoadFunction %}initialize();{% endblock %}
+{% block block_content %}
+    <!-- Portfolio block BEGIN -->
+    <div class="team-block content content-center" id="team">
+        <div class="container">
+            {% if sended != true %}
+                <p> Usted puso un regalo aquí </p>
+            {% else %}
+                <p> Este regalo le ha sido enviado, haga click en el marcador del mapa para ver el mensaje... </p>
+            {% endif %}
+        </div>
+    <div class="row">
+            <div style="position: relative;">
+
+                <div class="map-div" style="position: relative">
+
+                <div id="map_canvas" class="map-div"></div>
+
+
+
+                    {% if sended != false %}
+                        <div id="overlay_map"
+                             style="position: absolute; left:30%; top: 20%; background-color: rgba(255,255,255,0.60); display: none; width: 500px; ">
+                            <div class="row" style="margin-top: 10px">
+                                <div class="col-md-4">
+                                    <img src="{{ gift_image_path|imagine_filter('tn_gift') }}" class="pull-right"
+                                         style="bottom: 0px;">
+                                </div>
+                                <div class="col-md-8" style="height: 100%; ">
+                                    <p style="margin-right: 10px; text-align: justify">{{ give.message }}</p>
+
+                                    <div class="pull-right" style="bottom: 0px">
+                                        <p style="margin-right: 10px;">Ver adjunto <a
+                                                    href="{{ path('get_attach', {'codeGive': give.codeGive}) }}"> <img
+                                                        src="{{ asset('bundles/florprojectfrontend/images/common/camara.png') }}"
+                                                        alt="{{ "Post2" | trans({}, 'FlorProjectFrontendBundle') }}"
+                                                        style="vertical-align: center; padding-left: 20px;"></a></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br/>
+
+                            <p style="bottom: 5px; right: 5px" onclick="hideOverlay();"><a
+                                        href="#overlay_map">Ocultar</a></p>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="map-div" style="position: relative">
+                    <div id="map_canvas2"></div>
+                </div>
+            </div>
+
+            {#<p> <a href="#" class="btn blue"> Compartir en Facebook </a> | {% if sended != true %} <a href="{{ path('step3', {'codeGive':give.codeGive}) }}" class="btn green"> Enviar el Regalo </a> {% else %} <a href="#" class="btn red"> Denunciar </a> {% endif %}</p>#}
+            <p>
+                {#<a href="http://www.facebook.com/sharer.php?u=http://www.chrisnewland.com/postgres-list-user-defined-stored-procedures-77&amp;title=Postgres%20list%20user-defined%20stored%20procedures&amp;t=Postgres%20list%20user-defined%20stored%20procedures" title="Post this story to Facebook" class="pageNav">Facebook</a>#}
+                <a class="facebook btn blue" style="background-position: 0 0 !important;"
+                   href="javascript: void(0)" target="_parent"
+                   onclick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]={{ 'LOVEnLOCK' }}&amp;p[summary]={{ 'Lovenlock es tu pasaporte a un viaje virtual sin límites, una muestra de amor que traspasa fronteras. Siempre has querido sellar tu amor cerrando un candado sobre el puente de París, Venecia, Nueva York, Helsinki, la muralla china… ahora puedes hacerlo dejando intacta la estructura de los monumentos y conservando toda la magia.' }}&amp;p[url]={{ url('show_gift', {'codeGive': give.codeGive}) }}&amp;&amp;p[images][0]={{ 'http://lovenlock.com/web/bundles/florprojectfrontend/images/logo/logo_locknlove.png' }}', 'sharer',
+                           'toolbar=0,status=0,width=548,height=325');">
+                    Compartir en Facebook
+                </a>
+                {#<a href="#" class="btn blue"> Compartir en Facebook </a>#} | {% if sended != true %}
+                    <a href="{{ path('step3', {'codeGive':give.codeGive}) }}" class="btn green"> Enviar el
+                        Regalo </a> {% else %}
+                    <a href="#" class="btn red"> Denunciar </a> {% endif %}</p>
+
+
+        </div>
+
+    </div>
+
+{% endblock %}

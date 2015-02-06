@@ -1,0 +1,211 @@
+{% extends 'FlorProjectFrontendBundle:Common:gift_manager.html.twig' %}
+{% set first = '1' %}
+{% block head_script %}
+    <script src="https://www.google.com/jsapi"> </script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+
+    var map;
+    var map2;
+    var minZoomLevel = 1;
+
+    function initializemap(lat, lon, zoom, number) {
+        var myLatlng = new google.maps.LatLng(lat, lon);
+        var myOptions = {
+            zoom: zoom,
+            streetViewControl: false,
+            scrollwheel: true,
+            center: new google.maps.LatLng(lat, lon),
+            mapTypeControl: true,
+            mapTypeId: google.maps.MapTypeId.HYBRID ,
+            styles: [
+                {
+                    featureType: "road",
+                    stylers: [
+                        { lightness: 31 },
+                        { saturation: -70 }
+                    ]
+                },
+                {
+                    featureType:"poi",
+                    elementType:"labels",
+                    stylers:[
+                        {
+                            visibility:"off"
+                        }
+                    ]
+                }
+            ]
+        }
+        map = new google.maps.Map(document.getElementById(number), myOptions);
+
+        geocoder = new google.maps.Geocoder();
+
+
+        google.maps.event.addListener(map, 'zoom_changed', function() {
+            if (map.getZoom() < minZoomLevel) map.setZoom(minZoomLevel);
+        });
+
+
+    };
+
+
+
+
+    function initializemap2(lat, lon,zoom,heading,pitch) {
+
+         var myLatlng = new google.maps.LatLng(lat, lon);
+         var panoramaOptions = {
+         position: myLatlng,
+         pov: {
+         heading: heading,
+         zoom: zoom,
+         pitch: pitch
+         },
+         visible: true
+         };
+
+
+         map2 = new google.maps.StreetViewPanorama(document.getElementById('map_canvas2'), panoramaOptions);
+
+    };
+
+
+
+
+
+    function addMarker(lat, lon, titulo, foto, slat, slon,szoom,sheading,spitch, mensaje) {
+        var pinIcon = new google.maps.MarkerImage(
+                '/media/cache/tn_catalog/upload/media/'+foto,
+                null, /* size is determined at runtime */
+                null, /* origin is 0,0 */
+                null, /* anchor is bottom center of the scaled image */
+                new google.maps.Size(50, 50)
+        );
+
+        var myLatlng = new google.maps.LatLng(lat, lon);
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            icon: pinIcon,
+            map: map
+        });
+
+
+        google.maps.event.addListener(marker, 'click', function() {
+            initializemap2( slat, slon, szoom,sheading,spitch);
+            addMarker2(lat, lon, titulo, foto, mensaje);
+        });
+
+    };
+
+
+
+
+    function addMarker2(lat, lon, titulo, foto,mensaje) {
+        var pinIcon = new google.maps.MarkerImage(
+                '/media/cache/tn_catalog/upload/media/'+foto,
+                null, /* size is determined at runtime */
+                null, /* origin is 0,0 */
+                null, /* anchor is bottom center of the scaled image */
+                new google.maps.Size(135, 135)
+        );
+        var icon_base = pinIcon;
+        var myLatlng = new google.maps.LatLng(lat, lon);
+        var marker2 = new google.maps.Marker({
+            position: myLatlng,
+            icon: icon_base,
+            map: map2
+        });
+
+
+
+    /*    var content = '<div class="map-info-window">' +
+                '<img class="prop-thumb" style="width: 120px;height: 120px" src="/media/cache/tn_catalog/upload/media/'+foto+'" alt="'+titulo+'"  />' +
+                '<p>' +
+                '<span class="price" style="font-size: 16px;color: #4F8DB3;font-weight: bold;" >'+titulo+'</span>' +
+                '</p>' +
+                '<p>' +
+                '<span class="price" style="font-size: 14px;color: #000000;font-weight: normal;" >'+mensaje+'</span>' +
+                '</p>' +
+                '</div>';*/
+
+
+        var content = '<div class="map-info-window">' +
+                '<p>' +
+                '<span class="price" style="font-size: 14px;color: #000000;font-weight: bold;" >'+mensaje+'</span>' +
+                '</p>' +
+                '</div>';
+
+        //Vamos con el infowindow
+
+        id = typeof id !== 'undefined' ? id : '';
+        var infowindow = new google.maps.InfoWindow(
+                { content: content,
+                    id: id
+                });
+        google.maps.event.addListener(marker2, 'click', function() {
+            infowindow.open(map2,marker2);
+        });
+
+
+
+
+    };
+
+</script>
+
+
+
+<script>
+    $(document).ready(function() {
+        initializemap('41.43597868564272', '6.5120650431350535', 1,'map_canvas');
+
+        {% for give in gives %}
+
+        {% if first != '0' %}
+            {% set first = '0' %}
+            initializemap2( '{{ give.latitude3 }}', '{{ give.longitude3 }}', {{ give.zoom2 }},{{ give.heading }},{{ give.pitch }});
+        {% endif %}
+
+            addMarker('{{ give.latitude }}', '{{ give.longitude }}', '{{ give.gift.name }}', '{{ give.gift.media }}', '{{ give.latitude3 }}', '{{ give.longitude3 }}', {{ give.zoom2 }},{{ give.heading }},{{ give.pitch }}, '{{ give.message }}' );
+            addMarker2( '{{ give.latitude }}', '{{ give.longitude }}', '{{  give.gift.name  }}', '{{ give.gift.media }}', '{{ give.message }}');
+
+        {% endfor %}
+
+    });
+
+
+</script>
+
+{% endblock %}
+{% block onLoadFunction %}{% endblock %}
+{% block block_content %}
+    <!-- Portfolio block BEGIN -->
+    <div class="team-block content content-center" id="team">
+    <div class="container">
+
+        <p> Todos los Regalos </p>
+
+    </div>
+    <div class="row">
+        <div style="position: relative;">
+
+            <div class="map-div" style="position: relative">
+
+                <div id="map_canvas" class="map-div"></div>
+            </div>
+
+            <div class="map-div" style="position: relative">
+                <div id="map_canvas2"></div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    </div>
+{% endblock %}

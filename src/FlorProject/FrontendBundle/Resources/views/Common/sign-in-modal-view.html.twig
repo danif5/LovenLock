@@ -1,0 +1,7 @@
+<div class="modal fade" id="sign-in-modal">
+    <div class="modal-dialog">
+        <div id="sign-in-modal-content" class="modal-content col-md-12 col-sm-12 col-xs-12">
+            {{ include ('FOSUserBundle:Security:login_content.html.twig', {'partial' : 1, csrf_token : fos_csrf_provider.generateCsrfToken('authenticate'), 'last_username' : '' } ) }}
+        </div>
+    </div>
+</div>

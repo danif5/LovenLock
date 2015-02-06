@@ -1,0 +1,23 @@
+
+{% extends 'FlorProjectBackendBundle:Util:base.html.twig' %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bg-inverse">
+                <div class="portlet-title">
+                    <div class="caption">
+                       {% block form_header %}
+                       {% endblock %}
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->
+                    {% block form_body %}
+                    {% endblock %}
+                    <!-- END FORM-->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

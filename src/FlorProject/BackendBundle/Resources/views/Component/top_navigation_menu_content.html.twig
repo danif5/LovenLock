@@ -1,0 +1,26 @@
+{% set profile_image_path = 'upload/profile/' ~ app.user.photo %}
+<div class="top-menu">
+<ul class="nav navbar-nav pull-right">
+<!-- BEGIN USER LOGIN DROPDOWN -->
+<li class="dropdown dropdown-user">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+        <img alt="" class="img-circle hide1" src="{{ profile_image_path|imagine_filter('tn_profile') }}"/>
+					<span class="username username-hide-on-mobile">
+					{{ app.user.firstName ~ ' ' ~ app.user.lastName }} </span>
+        <i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu">
+        <!--li>
+            <a href="#">
+                <i class="icon-user"></i> Mi Perfil </a>
+        </li-->
+
+        <li>
+            <a href="{{ path('admin_logout') }}">
+                <i class="icon-key"></i> Desconectarme </a>
+        </li>
+    </ul>
+</li>
+<!-- END USER LOGIN DROPDOWN -->
+</ul>
+</div>

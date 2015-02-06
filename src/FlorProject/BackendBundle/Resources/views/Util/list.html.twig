@@ -1,0 +1,53 @@
+{% extends 'FlorProjectBackendBundle:Util:base.html.twig' %}
+
+{% block page_level_plugins_styles %}
+    <link rel="stylesheet" type="text/css" href="{{  asset('bundles/nivalmetronictemplate/assets/global/plugins/select2/select2.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{  asset('bundles/nivalmetronictemplate/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{  asset('bundles/nivalmetronictemplate/assets/global/plugins/bootstrap-datepicker/css/datepicker.css') }}"/>
+{% endblock %}
+
+{% block page_level_plugin_scripts %}
+    <script type="text/javascript" src="{{  asset('bundles/nivalmetronictemplate/assets/global/plugins/select2/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{  asset('bundles/nivalmetronictemplate/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{  asset('bundles/nivalmetronictemplate/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{  asset('bundles/nivalmetronictemplate/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+    <div class="col-md-12">
+    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+    <div class="portlet box grey-cascade">
+    {% block porlet_title %}
+    {% endblock %}
+    <div class="portlet-body">
+    <div class="table-toolbar">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="btn-group">
+                    {% block new_button  %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+        <table class="table table-striped table-bordered table-hover" id="{{ datatable_id }}">
+            <thead>
+            <tr role="row" class="heading">
+                {% block table_header %}
+                {% endblock %}
+            </tr>
+            <tr role="row" class="filter">
+                {% block table_filters %}
+                {% endblock %}
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,154 @@
+backend_blog:
+    path:     /blog/
+    defaults: { _controller: FlorProjectBackendBundle:BackendBlog:index }
+
+backend_blog_show:
+    path:     /blog/show/{id}
+    defaults: { _controller: FlorProjectBackendBundle:BackendBlog:show }
+
+backend_blog_new:
+    path:     /blog/new
+    defaults: { _controller: FlorProjectBackendBundle:BackendBlog:new }
+
+backend_blog_create:
+    path:     /blog/create
+    defaults: { _controller: FlorProjectBackendBundle:BackendBlog:create }
+    requirements: { _method: post }
+
+backend_blog_edit:
+    path:     /blog/edit/{id}
+    defaults: { _controller: FlorProjectBackendBundle:BackendBlog:edit }
+
+backend_blog_update:
+    path:     /blog/update/{id}
+    defaults: { _controller: FlorProjectBackendBundle:BackendBlog:update }
+    requirements: { _method: post }
+
+backend_blog_delete:
+    path:     /blog/delete/{id}
+    defaults: { _controller: FlorProjectBackendBundle:BackendBlog:delete }
+    requirements: { _method: post }
+
+backend_blog_delete_confirm:
+    path:     /blog/delete_confirm/{id}
+    defaults: { _controller: FlorProjectBackendBundle:BackendBlog:deleteConfirmation }
+    requirements: { _method: get }
+
+backend_comment_delete:
+    path:     /comment/delete/{id}
+    defaults: { _controller: FlorProjectBackendBundle:BackendComment:delete }
+    requirements: { _method: get }
+
+backend_dashboard:
+    path: /
+    defaults: { _controller: FlorProjectBackendBundle:BackendHome:dashboard }
+
+backend_user_list:
+    path: /user/
+    defaults: { _controller: FlorProjectBackendBundle:BackendUser:index }
+
+backend_user_listAjax:
+    path: /user/listAjax
+    defaults: { _controller: FlorProjectBackendBundle:BackendUser:listAjax }
+
+backend_user_new:
+    path: /user/new
+    defaults: { _controller: FlorProjectBackendBundle:BackendUser:new }
+
+backend_user_create:
+    path: /user/create
+    defaults: { _controller: FlorProjectBackendBundle:BackendUser:create }
+
+backend_user_edit:
+    path: /user/edit/{id}
+    defaults: { _controller: FlorProjectBackendBundle:BackendUser:edit }
+
+backend_user_update:
+    path: /user/update
+    defaults: { _controller: FlorProjectBackendBundle:BackendUser:update }
+
+backend_user_delete:
+    path: /user/delete/{id}
+    defaults: { _controller: FlorProjectBackendBundle:BackendUser:delete }
+
+backend_user_confirmed_delete:
+    path: /user/remove
+    defaults: { _controller: FlorProjectBackendBundle:BackendUser:deleteConfirmed }
+
+#Familia
+backend_family_list:
+    path: /family/
+    defaults: { _controller: FlorProjectBackendBundle:BackendFamily:index }
+
+backend_family_listAjax:
+    path: /family/listAjax
+    defaults: { _controller: FlorProjectBackendBundle:BackendFamily:listAjax }
+
+backend_family_new:
+    path: /family/new
+    defaults: { _controller: FlorProjectBackendBundle:BackendFamily:new }
+
+backend_family_create:
+    path: /family/create
+    defaults: { _controller: FlorProjectBackendBundle:BackendFamily:create }
+
+backend_family_edit:
+    path: /family/edit/{id}
+    defaults: { _controller: FlorProjectBackendBundle:BackendFamily:edit }
+
+backend_family_update:
+    path: /family/update
+    defaults: { _controller: FlorProjectBackendBundle:BackendFamily:update }
+
+backend_family_delete:
+    path: /family/delete/{id}
+    defaults: { _controller: FlorProjectBackendBundle:BackendFamily:delete }
+
+backend_family_confirmed_delete:
+    path: /family/remove
+    defaults: { _controller: FlorProjectBackendBundle:BackendFamily:deleteConfirmed }
+
+#Regalos
+backend_gift_list:
+    path: /gift/
+    defaults: { _controller: FlorProjectBackendBundle:BackendGift:index }
+
+backend_gift_listAjax:
+    path: /gift/listAjax
+    defaults: { _controller: FlorProjectBackendBundle:BackendGift:listAjax }
+
+backend_gift_new:
+    path: /gift/new
+    defaults: { _controller: FlorProjectBackendBundle:BackendGift:new }
+
+backend_gift_create:
+    path: /gift/create
+    defaults: { _controller: FlorProjectBackendBundle:BackendGift:create }
+
+backend_gift_edit:
+    path: /gift/edit/{id}
+    defaults: { _controller: FlorProjectBackendBundle:BackendGift:edit }
+
+backend_gift_update:
+    path: /gift/update
+    defaults: { _controller: FlorProjectBackendBundle:BackendGift:update }
+
+backend_gift_delete:
+    path: /gift/delete/{id}
+    defaults: { _controller: FlorProjectBackendBundle:BackendGift:delete }
+
+backend_gift_confirmed_delete:
+    path: /gift/remove
+    defaults: { _controller: FlorProjectBackendBundle:BackendGift:deleteConfirmed }
+
+admin_login:
+    pattern:  /login
+    defaults: { _controller: FlorProjectBackendBundle:BackendSecurity:login }
+
+admin_check:
+    pattern:  /login_check
+    defaults: { _controller: FOSUserBundle:Security:check }
+
+admin_logout:
+    pattern:  /logout
+    defaults: { _controller: FOSUserBundle:Security:logout }

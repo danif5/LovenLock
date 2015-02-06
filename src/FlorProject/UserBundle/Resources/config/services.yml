@@ -1,0 +1,14 @@
+parameters:
+     flor_user.user.entity.class: FlorProject\BackendBundle\Entity\User
+
+services:
+    flor_user.registration.form.type:
+        class: FlorProject\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%flor_user.user.entity.class%]
+        tags:
+            - { name: form.type, alias: flor_user_registration }
+    flor_user.form.handler.registration:
+            class: FlorProject\UserBundle\Form\Handler\RegistrationFormHandler
+            arguments: ["@fos_user.registration.form", "@request", "@fos_user.user_manager", "@fos_user.mailer", "@fos_user.util.token_generator"]
+            scope: request
+            public: false

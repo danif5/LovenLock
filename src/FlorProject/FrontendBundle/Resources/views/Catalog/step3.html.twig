@@ -1,0 +1,300 @@
+{% extends 'FlorProjectFrontendBundle:Common:gift_manager.html.twig' %}
+{% block head_script %}
+    <script src="https://www.google.com/jsapi"> </script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        var map;
+        var map2;
+        var marker;
+        var marker2
+        var geocoder;
+        var geocoder2;
+        var minZoomLevel = 1;
+
+
+        function submitForm()
+        {
+            $('#latitude2').val(map.center.lat()) ;
+            $('#longitude2').val(map.center.lng()) ;
+            $('#zoom').val(map.zoom) ;
+            $('#latitude').val(marker2.position.k) ;
+            $('#longitude').val(marker2.position.D) ;
+            $('#latitude3').val(map2.position.k) ;
+            $('#longitude3').val(map2.position.D) ;
+            $('#zoom2').val(map2.pov.zoom) ;
+            $('#heading').val(map2.pov.heading) ;
+            $('#pitch').val(map2.pov.pitch) ;
+
+            document.getElementById('formData').submit();
+        }
+
+
+
+        function initializemap(lat, lon, zoom, number) {
+            var myLatlng = new google.maps.LatLng(lat, lon);
+            var myOptions = {
+                zoom: zoom,
+                streetViewControl: false,
+                scrollwheel: true,
+                center: new google.maps.LatLng(lat, lon),
+                mapTypeControl: true,
+                mapTypeId: google.maps.MapTypeId.HYBRID ,
+                styles: [
+                    {
+                        featureType: "road",
+                        stylers: [
+                            { lightness: 31 },
+                            { saturation: -70 }
+                        ]
+                    },
+                    {
+                        featureType:"poi",
+                        elementType:"labels",
+                        stylers:[
+                            {
+                                visibility:"off"
+                            }
+                        ]
+                    }
+                ]
+            }
+            map = new google.maps.Map(document.getElementById(number), myOptions);
+
+            geocoder = new google.maps.Geocoder();
+
+            var thePanorama = map.getStreetView();
+
+            google.maps.event.addListener(thePanorama, 'visible_changed', function() {
+
+                if (thePanorama.getVisible()) {
+
+                  //  marker.setPosition(thePanorama.getLocation().latLng);
+
+                } else {
+
+                }
+
+            });
+
+            google.maps.event.addListener(map, 'zoom_changed', function() {
+                if (map.getZoom() < minZoomLevel) map.setZoom(minZoomLevel);
+            });
+
+
+        };
+
+
+
+
+        function initializemap2(lat, lon) {
+ /*           var myLatlng = new google.maps.LatLng(lat, lon);
+            var panoramaOptions = {
+                position: myLatlng,
+                pov: {
+                    heading: heading,
+                    zoom: zoom,
+                    pitch: pitch
+                },
+                visible: true
+            };
+
+
+            map2 = new google.maps.StreetViewPanorama(document.getElementById('map_canvas2'), panoramaOptions);
+*/
+
+            // A PARTIR DE QUI LO QUE HAGO ES SITUAR LA MEJOR POSICION PARA UN MARKER
+
+         // set the lookTo var to contain the coordinates of the address
+                    var lookTo = new google.maps.LatLng(lat, lon);
+                    // set the options for the panorama view
+                    var panoramaOptions = {
+                        position: lookTo,
+                        panControl: true,
+                        addressControl: false,
+                        linksControl: true,
+                        zoomControlOptions: false
+                    };
+                    // initialize a new panorama API object and point to the element with ID streetview as container
+                    map2 = new google.maps.StreetViewPanorama(document.getElementById('map_canvas2'), panoramaOptions);
+                    // initialize a new streetviewService object
+                    var service = new google.maps.StreetViewService;
+                    // call the "getPanoramaByLocation" function of the Streetview Services to return the closest streetview position for the entered coordinates
+                    service.getPanoramaByLocation(map2.getPosition(), 50, function(panoData) {
+                        // if the function returned a result
+                        if (panoData != null) {
+                            // the GPS coordinates of the streetview camera position
+                            var panoCenter = panoData.location.latLng;
+                            // this is where the magic happens!
+                            // the "computeHeading" function calculates the heading with the two GPS coordinates entered as parameters
+                            var heading = google.maps.geometry.spherical.computeHeading(panoCenter, lookTo);
+                            // now we know the heading (camera direction, elevation, zoom, etc) set this as parameters to the panorama object
+                            var pov = map2.getPov();
+                            pov.heading = heading;
+                            map2.setPov(pov);
+                            // set a marker on the location we are looking at, to verify the calculations were correct
+                           /* var marker = new google.maps.Marker({
+                                map: pano,
+                                position: lookTo
+                            });*/
+                        } else {
+                            // no streetview found :(
+                            alert('No street view for this place');
+                        }
+                    });
+
+
+                // END SITUAR MEJOR POSICION
+        };
+
+
+
+
+
+        function addMarker(lat, lon, titulo, foto) {
+            var pinIcon = new google.maps.MarkerImage(
+                    '/media/cache/tn_catalog/upload/media/'+foto,
+                    null, /* size is determined at runtime */
+                    null, /* origin is 0,0 */
+                    null, /* anchor is bottom center of the scaled image */
+                    new google.maps.Size(50, 50)
+            );
+
+            var myLatlng = new google.maps.LatLng(lat, lon);
+            marker = new google.maps.Marker({
+                position: myLatlng,
+                icon: pinIcon,
+                map: map,
+                draggable: true
+            });
+
+            google.maps.event.addListener(marker, 'dragend', function(event) {
+                initializemap2( event.latLng.lat(),event.latLng.lng());
+                addMarker2( event.latLng.lat(),event.latLng.lng(), '{{  gift.name }}', '{{ gift.media }}');
+            });
+
+            google.maps.event.addListener(marker, 'click', function(event) {
+                initializemap2( event.latLng.lat(),event.latLng.lng());
+                addMarker2( event.latLng.lat(),event.latLng.lng(), '{{  gift.name }}', '{{ gift.media }}');
+            });
+        };
+
+
+
+
+        function addMarker2(lat, lon, titulo, foto) {
+            var pinIcon = new google.maps.MarkerImage(
+                    '/media/cache/tn_catalog/upload/media/'+foto,
+                    null, /* size is determined at runtime */
+                    null, /* origin is 0,0 */
+                    null, /* anchor is bottom center of the scaled image */
+                    new google.maps.Size(135, 135)
+            );
+            var icon_base = pinIcon;            var myLatlng = new google.maps.LatLng(lat, lon);
+            marker2 = new google.maps.Marker({
+                position: myLatlng,
+                icon: icon_base,
+                map: map2,
+                draggable: true
+            });
+
+            google.maps.event.addListener(marker2, 'dragend', function(event) {
+                marker.setPosition( event.latLng);
+            });
+        };
+
+
+        $(document).ready(function() {
+
+            initializemap( 41.43597868564272, 6.5120650431350535, 1,'map_canvas');
+            addMarker( '48.858863', '2.293315043135067', '{{  gift.name }}', '{{ gift.media }}');
+
+            initializemap2( 48.85879317258973,2.293214);
+            addMarker2( '48.85879317258973', '2.293315043135067', '{{  gift.name }}', '{{ gift.media }}');
+
+            var input = /** @type {HTMLInputElement} */(
+                    document.getElementById('address'));
+
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+        });
+
+
+        function codeAddress() {
+            var address = document.getElementById("address").value;
+            geocoder.geocode( { 'address': address}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    marker.setPosition(results[0].geometry.location);
+                    initializemap2( results[0].geometry.location.k + 0.00005,results[0].geometry.location.D + 0.00005);
+                    addMarker2( results[0].geometry.location.k + 0.00005,results[0].geometry.location.D + 0.00005, '{{  gift.name }}', '{{ gift.media }}');
+
+                }
+                else
+                {
+                    alert("No se pudo encontrar la dirección dada");
+                }
+            });
+        }
+
+
+    </script>
+
+
+{% endblock %}
+{% block onLoadFunction %}{% endblock %}
+{% block block_content %}
+    <!-- Portfolio block BEGIN -->
+    <div class="portfolio-block content content-center" id="portfolio">
+    <div class="container">
+        <p> ¿ Donde quiere situar su regalo ? </p>
+    </div>
+    <form action="{{ path('create_view') }}" method="post" style="display: none" id="formData">
+        <input type="hidden" name="codeGive" value="{{ codeGive }}"/>
+        <input type="hidden" name="latitude" id="latitude" value="40.69847032728747"/>
+        <input type="hidden" name="longitude" id="longitude" value="-73.9514422416687" />
+        <input type="hidden" name="zoom" id="zoom" value="" />
+        <input type="hidden" name="latitude2" id="latitude2" value="" />
+        <input type="hidden" name="longitude2" id="longitude2" value="" />
+        <input type="hidden" name="latitude3" id="latitude3" value="" />
+        <input type="hidden" name="longitude3" id="longitude3" value="" />
+        <input type="hidden" name="zoom2" id="zoom2" value="" />
+        <input type="hidden" name="heading" id="heading" value="" />
+        <input type="hidden" name="pitch" id="pitch" value="" />
+
+
+
+    </form>
+    <div class="row">
+        <div style="position: relative;">
+
+            <div class="map-div" style="position: relative">
+                <div id="map_canvas"></div>
+                <div style="position: absolute; left: 35%; top: 10px; margin-left:-19%">
+                    <div class="input-group input-medium" style="width: 400px !important;">
+                        <input class="form-control" id="address" type="text" >
+                        <span class="input-group-btn">
+                            <button class="btn blue" type="button" onclick="codeAddress();">Buscar</button>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="map-div" style="position: relative">
+                <div id="map_canvas2"></div>
+
+            </div>
+        </div>
+        <div style="position: relative;">
+
+
+        </div>
+        <p> <a href="#" onclick="submitForm();"> Enviar >> </a></p>
+    </div>
+
+    </div>
+{% endblock %}

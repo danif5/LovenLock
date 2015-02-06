@@ -1,0 +1,22 @@
+{% extends 'NivalMetronicTemplateBundle:Admin:layout.html.twig' %}
+
+{% block logo_img %}
+    {{ include('FlorProjectBackendBundle:Component:logo_content.html.twig') }}
+{% endblock %}
+
+{% block top_navigation_menu %}
+    {{ include('FlorProjectBackendBundle:Component:top_navigation_menu_content.html.twig') }}
+{% endblock %}
+
+{% block sidebar_menu %}
+    {{ include('FlorProjectBackendBundle:Component:sidebar_menu_content.html.twig') }}
+{% endblock %}
+
+{% block page_level_plugins_styles %}
+    <style type="text/css">
+        .logo-image-selector {
+            height: 40%;
+            width: 40%;
+        }
+    </style>    
+{% endblock %}

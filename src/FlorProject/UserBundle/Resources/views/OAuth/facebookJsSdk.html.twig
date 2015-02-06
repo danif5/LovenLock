@@ -1,0 +1,57 @@
+<div id="fb-root"></div>
+<script>
+    function statusChangeCallback(response) {
+
+        if (response.status === 'connected') {
+            loginSuccessfull();
+        } else if (response.status === 'not_authorized') {
+            document.getElementById('status').innerHTML = 'Por favor autentíquese en esta aplicación';
+        } else {
+            document.getElementById('status').innerHTML = 'Por favor autentíquese usando su cuenta de facebook';
+        }
+    }
+
+    function checkLoginState() {
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+        });
+    }
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '{{ fb_app_id }}',
+            cookie: true,
+            xfbml: true,
+            version: 'v2.1'
+        });
+    };
+
+    // Load the Fb Javascript SDK asynchronously
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function loginSuccessfull() {
+
+        $("#btnLogOff").addClass("hide");
+        FB.api('/me', function (response) {
+            var statusDiv = document.getElementById('status');
+            var name = response.name;
+            var email = response.email;
+            statusDiv.innerHTML = 'Gracias por autenticarse, ' + response.name + '!';
+
+            $("#FacebookLoginType_name").val(name);
+            $("#FacebookLoginType_email").val(email);
+
+            $("#signUpOrRegister").hide();
+            $("#sign-in-inputs-div").hide();
+            $("#continueAfterLogin").removeClass("hide").fadeIn();
+            $("#btnLogOff").removeClass("hide").fadeIn();
+        });
+    }
+</script>

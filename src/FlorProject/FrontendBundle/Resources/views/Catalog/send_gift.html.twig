@@ -1,0 +1,51 @@
+{% extends 'FlorProjectFrontendBundle:Common:gift_manager.html.twig' %}
+{% block block_content %}
+    <!-- Portfolio block BEGIN -->
+    <div class="portfolio-block content content-center" id="portfolio">
+        <div class="container">
+            <h5 style="text-transform: uppercase"> {{ giftType }} - {{ firstFamily.familyName  }} </h5>
+            <p> EN LOVENLOCK PONEMOS EL MUNDO A TUS PIES, LAS EMOCIONES SON COSA TUYA </p>
+            <br />
+            <p>
+               {{  giftElige }}
+            </p>
+
+        </div>
+        <div class="row">
+            {% if gifts|length == 0 %}
+                <div style="vertical-align: center; text-align: center">
+                    No existen regalos que cumplan con estos criterios
+                </div>
+             {% endif %}
+            {% for gift in gifts %}
+            <div class="item">
+                {% set gift_image_path = 'upload/media/' ~ gift.media %}
+                <img src="{{ gift_image_path|imagine_filter('tn_catalog') }}" alt="NAME" class="img-responsive">
+                {% if gift.price == 0 %}
+                    <a href="{{ path('step2Free', {'codeGift':gift.id}) }}" class="zoom valign-center">
+                        <div class="valign-center-elem">
+                            <strong>{{  gift.name }}</strong>
+                            <em> {{  gift.price|number_format(2) }} € </em>
+                            <b onclick="document.location='{{ path('step2Free', {'codeGift':gift.id}) }}';">Enviar</b>
+                        </div>
+                    </a>
+                {% else %}
+                    <a href="{{ path('step2', {'codeGift':gift.id}) }}" class="zoom valign-center">
+                        <div class="valign-center-elem">
+                            <strong>{{  gift.name }}</strong>
+                            <em> {{  gift.price|number_format(2) }} € </em>
+                            <b onclick="document.location='{{ path('step2', {'codeGift':gift.id}) }}';">Enviar</b>
+                        </div>
+                    </a>
+                {% endif %}
+
+
+
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <p class="wizard-guide"> <a href="{{ path('families', {'giftType': giftType }) }}"><< Anterior </a> </p>
+    <!-- Portfolio block END -->
+{% endblock %}

@@ -1,0 +1,89 @@
+
+{% extends 'FlorProjectBackendBundle:Util:form.html.twig' %}
+
+{% set page_title="Blog" %}
+{% set title_small="creación de artículo" %}
+
+{% block breadcrumb %}
+    <li>
+        <i class="fa fa-home"></i>
+        <a href="{{ path('backend_dashboard') }}">Inicio</a>
+        <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+        <a href="{{ path('backend_blog') }}">Blog</a>
+        <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+        <a href="#">Nuevo artículo</a>
+    </li>
+{% endblock %}
+
+{% block page_level_plugins_styles %}
+    <link rel="stylesheet" type="text/css" href="{{  asset('bundles/nivalmetronictemplate/assets/global/plugins/select2/select2.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{  asset('bundles/nivalmetronictemplate/assets/global/plugins/bootstrap-summernote/summernote.css') }}"/>
+{% endblock %}
+
+{% block page_level_plugin_scripts %}
+    <script type="text/javascript" src="{{  asset('bundles/nivalmetronictemplate/assets/global/plugins/select2/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{  asset('bundles/nivalmetronictemplate/assets/global/plugins/bootstrap-summernote/summernote.min.js') }}"></script>
+{% endblock %}
+
+{% block page_level_script %}
+    <script src="{{  asset('bundles/nivalmetronictemplate/assets/global/scripts/metronic.js') }}" type="text/javascript"></script>
+    <script src="{{  asset('bundles/nivalmetronictemplate/assets/admin/layout/scripts/layout.js') }}" type="text/javascript"></script>
+
+    <script>
+        jQuery(document).ready(function() {
+            //Metronic.init(); // init metronic core components
+            Layout.init(); // init current layout
+            $('#florproject_backendbundle_blog_body').summernote({height: 300});
+        });
+    </script>
+{% endblock %}
+
+{% block form_header %}
+    <div class="caption">
+        <i class="icon-gift font-red-sunglo"></i>
+        <span class="caption-subject font-red-sunglo bold uppercase">Nuevo artículo</span>
+        <span class="caption-helper">creación de un nuevo artículo en el sistema</span>
+    </div>
+{% endblock %}
+
+{% block form_body %}
+    {% if form is defined %}
+        <form action="{{ path('backend_blog_create') }}"  {{ form_enctype(form) }} method="POST" class="form-horizontal">
+            <div class="form-body">
+                {{ form_errors(form) }}
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Título</label>
+                    <div class="col-md-10">
+                        {{ form_row(form.title) }}
+                        <span class="help-block">{{ form_errors(form.title) }}</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Cuerpo</label>
+                    <div class="col-md-10">
+                        {{ form_row(form.body) }}
+                        <span class="help-block">{{ form_errors(form.body) }} </span>
+                    </div>
+                </div>
+
+                {{ form_rest(form) }}
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-4">
+                        <button type="submit" class="btn green">Aceptar</button>
+                        <a href="{{ path('backend_blog') }}" class="btn default">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,55 @@
+<div class="register-info-text text-center" style="margin-top: 2%">
+    <div>Si usted crea una cuenta está aceptando nuestros </div>
+    <div id="terms-of-service-div"><a>Términos de Servicio</a></div>
+</div>
+<div id="register-inputs-div" class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2 col-sm-offset-2">
+    {% if form is defined %}
+        <form action="{{ path('frontend_user_create') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+            <br>
+            {{ form_errors(form) }}
+            <br>
+            {{ form_row(form.firstName) }}
+            <br>
+            {{ form_row(form.lastName) }}
+            <br>
+            {{ form_errors(form.email) }}
+            {{ form_widget(form.email, { 'attr': {'placeholder': 'Email', 'class': 'form-control'} }) }}
+            <br>
+            {{ form_errors(form.plainPassword.first) }}
+            {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Contraseña', 'class': 'form-control'} }) }}
+            <br>
+            {{ form_errors(form.plainPassword.second) }}
+            {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'Repetir Contraseña', 'class': 'form-control'} }) }}
+            <br>
+            {{ form_row(form.country) }}
+            <br>
+            {{ form_row(form.birthDate) }}
+            <br>
+            {{ form_row(form.gender) }}
+            <br>
+            {{ form_rest(form) }}
+
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center" style="margin-bottom: 20px;">
+                <input type="submit" id="register-btn-sign-up-now" class="btn btn-success" value="Registrarse Ahora" />
+            </div>
+            <br>
+        </form>
+        <br>
+    {% endif %}
+</div>
+<br>
+<script type="text/javascript">
+    function makeid()
+    {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 20; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+    }
+    document.getElementById('fos_user_registration_form_username').value = makeid();
+</script>
+
+

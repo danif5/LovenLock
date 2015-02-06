@@ -1,0 +1,90 @@
+{% extends 'FlorProjectFrontendBundle:Common:layout_general.html.twig' %}
+
+{% block page_content %}
+    <!-- Catalog block BEGIN -->
+    <div class="team-block content content-center margin-bottom-40" id="blog">
+        <div class="container">
+            <br>
+            <br>
+
+            <h2>{{ "Artículo" | trans({}, 'FlorProjectFrontendBundle') }}</h2>
+            <br>
+
+            <div class="col-md-8 col-sm-12 col-md-offset-2 article-block">
+                <div class="row">
+                    <div class="blog-article">
+                        <h3>
+                            {{ entity.title }}
+                        </h3>
+
+                        <div style="text-align: left;">
+                            {{ entity.body|raw }}
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h2>{{ "Comentarios" | trans({}, 'FlorProjectFrontendBundle') }}</h2>
+                {% for comment in entity.comments %}
+                    <div class="row">
+                        <div class="" style="text-align: left;">
+                            <h3>
+                                {{ comment.name }}
+                            </h3>
+
+                            <div style="text-align: left;">
+                                {{ comment.body }}
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+                {% if form is defined %}
+                    <form action="{{ path('flor_project_frontend_comment_create') }}"  {{ form_enctype(form) }} method="POST" class="form-horizontal">
+                        <div class="form-body">
+                            {{ form_errors(form) }}
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Nombre</label>
+
+                                <div class="col-md-10">
+                                    {{ form_row(form.name) }}
+                                    <span class="help-block">{{ form_errors(form.name) }}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Email</label>
+
+                                <div class="col-md-10">
+                                    {{ form_row(form.email) }}
+                                    <span class="help-block">{{ form_errors(form.email) }} </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Comentario</label>
+
+                                <div class="col-md-10">
+                                    {{ form_row(form.body) }}
+                                    <span class="help-block">{{ form_errors(form.body) }} </span>
+                                </div>
+                            </div>
+
+                            {{ form_rest(form) }}
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-4">
+                                    <button type="submit" class="btn green">Enviar Comentario</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- Sendit block END -->
+{% endblock %}
+
+
+
+

@@ -1,0 +1,23 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     localhost
+    database_port:     3306
+    database_name:     db553288783
+    database_user:     root
+    database_password:
+
+    mailer_transport:  smtp.1and1.es
+    mailer_host:       127.0.0.1
+    mailer_user:       regalo@lovenlock.com
+    mailer_password:   lovelock2015
+    locale:            es
+    secret:            'secret12345'
+
+    debug_toolbar:          true
+    debug_redirects:        false
+    use_assetic_controller: true
+
+#Sabrus facebook apps ids
+    fb_app_id: 837075486333316 #for http://localhost:8000 (local development)
+    #fb_app_id: 830048377036027 #for http://develop.sabrus.ch (develop)
+    #fb_app_id: 830046087036256 #for http://sabrus.ch (production)

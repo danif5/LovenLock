@@ -1,0 +1,95 @@
+{% extends 'FlorProjectBackendBundle:Util:base.html.twig' %}
+
+{% set page_title="Blog" %}
+{% set title_small="Artículo del blog" %}
+{#{% set datatable_id="family_table" %}#}
+
+{% block breadcrumb %}
+    <li>
+        <i class="fa fa-home"></i>
+        <a href="{{ path('backend_dashboard') }}">Inicio</a>
+        <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+        <a href="#">Blog</a>
+        <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+        <a href="#">Artículo</a>
+    </li>
+{% endblock %}
+
+
+{% block page_level_plugins_styles %}
+{% endblock %}
+
+{% block page_level_plugin_scripts %}
+{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn green" href="{{ path('backend_blog') }}"><i class="m-icon-swapleft m-icon-white"></i> Ir al
+                listado</a>
+
+            <div class="col-md-12 col-sm-12 article-block">
+
+                <div class="row">
+                    <div class="blog-article">
+                        <h3>
+                            {{ entity.title }}
+                        </h3>
+
+                        <p>
+                            {{ entity.body|raw }}
+                        </p>
+                        <hr>
+                        <div>
+                            <div class="pull-left">
+                                <a class="btn blue" href="{{ path('backend_blog_edit', { 'id': entity.id }) }}">
+                                    Editar <i class="icon-pencil"></i>
+                                </a>
+                            </div>
+                            <ul class="list-inline pull-right">
+                                <li>
+                                    <i class="fa fa-calendar"></i>
+                                    <a href="#">{{ entity.creationDate|date("d-m-Y H:i") }}</a>
+                                </li>
+                                <li>
+                                    {#<i class="fa fa-comments"></i>
+                                    <a href="#">38 Comments </a>#}
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="padding: 20px;">
+                            <h3>Comentarios</h3>
+                            {% for comment in entity.comments %}
+                                <div class="row">
+                                    <div class="" style="text-align: left;">
+                                        <h3>
+                                            {{ comment.name }}
+                                        </h3>
+
+                                        <div style="text-align: left;">
+                                            {{ comment.body }}
+                                        </div>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a class="btn blue"
+                                           href="{{ path('backend_comment_delete', { 'id': comment.id }) }}">Eliminar</a>
+                                    </div>
+
+                                </div>
+                                <hr>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

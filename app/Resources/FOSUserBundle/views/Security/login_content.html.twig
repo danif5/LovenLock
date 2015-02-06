@@ -1,0 +1,54 @@
+{% include 'FlorProjectUserBundle:OAuth:facebookJsSdk.html.twig' %}
+<div class="modal-header">
+    <button type="button" class="close {{ partial != 1 ? "hide" : "" }}" data-dismiss="modal" aria-hidden="true">x
+    </button>
+    <div id="sign-in-header-text">Login</div>
+</div>
+<div class="modal-body">
+    <div id="facebook-div">
+        <a href="javascript:void(0);"
+           onclick="javascript:FB.login(statusChangeCallback, {scope: 'public_profile,email'});">
+            <img src="{{ asset('bundles/florprojectfrontend/images/logo/facebook-logo.png') }}">
+
+            <div id="status" style="display: inline; padding-left: 5px;">Entrar con mi cuenta de Facebook</div>
+        </a>
+    </div>
+    <div class="sign-in-info-text text-center">
+        <div id="share-info-div">Lovenlock.com nunca compartirá su información personal o <br> contactará a sus
+            amigos sin su permiso.
+        </div>
+    </div>
+    <div id="sign-in-inputs-div">
+        <div id="signUpOrRegister" class="text-center">
+            <form action="{{ path("fos_user_security_check") }}" method="post" role="form">
+
+                <div class="text-03em">
+                    <div class="alert alert-danger text-center {{ error | default('') == '' ? "hide" : "" }}">
+                        <span class="text-danger">{{ error | default ('') |trans({}, 'FOSUserBundle') }}</span>
+                    </div>
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+                <div class="form-group">
+                    <input type="text" id="username" name="_username" class="form-control"
+                           value="{{ last_username }}" required="required" placeholder="Nombre de Usuario o E-Mail"/>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" id="password" name="_password" class="form-control"
+                           placeholder="Contraseña" required="required"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" id="_submit" name="_submit" class="btn btn-success"
+                           value="Entrar ahora !"/>
+                    <a id="register-link" class="btn green" data-toggle="modal"
+                       href="{{ partial == 1 ? "#register-modal" : path("fos_user_registration_register") }}">Registrarse</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="continueAfterLogin" class="hide">
+        {{ render(controller('FlorProjectUserBundle:OAuth:facebookLogin')) }}
+    </div>
+</div>

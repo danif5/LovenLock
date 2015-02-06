@@ -1,0 +1,43 @@
+{% extends 'FlorProjectFrontendBundle:Common:layout_general.html.twig' %}
+{% block page_content %}
+    <div style="position: relative;">
+        <img style="width: 100%;  min-height: 500px;"
+             src="{{ asset('bundles/florprojectfrontend/images/causes/causes_fondo.jpg') }}"
+             class="img-responsive">
+
+        <div style="position: absolute; margin: 0% 5% 5% 5%; color: white; bottom: 0; width: 90%;">
+            <div class="row">
+                <div class="col-md-8">
+                    <img style="display: block; margin-bottom: 5px;"
+                         src="{{ asset('bundles/florprojectfrontend/images/causes/causes_logo.png') }}">
+                    “lockncauses” es una plataforma solidaria, gratuita, abierta e interactiva, que iremos construyendo
+                    entre todos.
+                    Próximamente tendrás la oportunidad de situar tu causa para que todo el planeta pueda “lockearse” a
+                    ella.
+                    Para empezar a caminar te proponemos una iniciativa con la que no te resultará difícil
+                    solidarizarte.
+                    Alza tu voz…
+
+                    <style>
+                        .btn.btn-causes {
+                            background-color: rgba(113, 169, 194, 0.2);
+                            color: white;
+                            border: 1px solid rgba(113, 169, 194, 1);
+                        }
+
+                        .btn.btn-causes:hover {
+                            background-color: rgba(113, 169, 194, 0.5);
+                        }
+                    </style>
+                    <div class="text-center" style="margin: 5px 0;">
+                        <a class="btn btn-causes" href="#" style="text-transform: uppercase;">Por un mundo en paz</a>
+                    </div>
+                    Para adherirte, simplemente entra en la causa y realizarás un viaje virtual hasta el lugar donde
+                    debes dejar tu candado. Añade un breve mensaje y habrás contribuido a hacer un mundo mejor.
+                    ¡En lovenlock ponemos el mundo a tus píes, las emociones son cosa tuya!
+                    Muchas gracias por tu solidaridad
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
