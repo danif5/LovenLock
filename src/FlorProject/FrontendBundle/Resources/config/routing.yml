@@ -84,6 +84,3 @@ sendMessage:
     requirements: { _method: post }
 
 
-frontend_user_create:
-    path: /user/register
-    defaults: { _controller: FlorProjectFrontendBundle:FrontendCatalog:createUser }

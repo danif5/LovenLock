@@ -264,10 +264,7 @@ class FrontendCatalogController extends Controller
         else
         {
             // ESTAS SON LAS CREDENCIALES DE VERDAD //
-            $API_UserName="administracion_api1.lovenlock.com";
-            $API_Password="ZSYW29TXKZ5D2T85";
-            $API_Signature="Aoh6HFDgObB4k71XMixcfHg9rDLPAsB1xw.Bw3GIkfpRMhlGS.7E68E3";
-            $merchant_mail_0 = 'administracion@lovenlock.com';
+
 
         }
         // BN Code 	is only applicable for partners
@@ -796,31 +793,6 @@ class FrontendCatalogController extends Controller
 
 
 
-
-    public function createUserAction(Request $request)
-    {
-        $userManager = $this->container->get('fos_user.user_manager');
-        $user = $userManager->createUser();
-
-        $user->setPhoto('photo1.jpg');
-        $form = $this->createForm(new UserFormType('FlorProject\BackendBundle\Entity\User'), $user);
-        $form->handleRequest($request);
-        $roles = array();
-        $roles[] = 'ROLE_USER';
-        $user->setRoles($roles);
-        $user->setEnabled(true);
-        if ($form->isValid())
-        {
-            $userManager->updateUser($user, true);
-            $this->get('session')->getFlashBag()->add('message', "Usuario creado con exito");
-            return $this->redirect($this->generateUrl('backend_user_list'));
-        }
-        $this->get('session')->getFlashBag()->add('error', "Debe llenar correctamente los campos");
-        return $this->render('FlorProjectBackendBundle:User:new.html.twig', array(
-            'form' => $form->createView()
-        ));
-
-    }
 
 
 
